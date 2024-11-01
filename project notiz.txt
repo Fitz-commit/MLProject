@@ -1,0 +1,20 @@
+- welche modelle schließe ich auc
+- welche features wähle ich
+
+pragmatisch anfangen:
+- AASM definieren Schlafdaten (wann jetzt genau das REM ist)
+-mögliche ansatz wäre auf einen kanal zu gehen
+-oder auf die augenbewegung
+-time series classification
+
+
+mögliche schritte
+- sleep stage classification
+- labels sind in 30 sec intervallen
+- die features allerdings nicht
+- eventuell mal als test: auf einer prson testen und trainieren, danach auf mehreren personen testen und traainieren
+- distanzen werden wahrscheinlich nicht so gut funktionieren 
+- frequency domain könnte man machen 
+- feature extrection aus time series _> wir reduzieren den feature bereich -> es gibt bibliotheken die so min wert max wwert abweichung etc. machen (aeon bibliothek, ts fresh catch22)
+-time searies classifiers (aeon bib) z.b. Rocket
+- spefzisische ML-Modelle für Schlafdaten (deepSleep)

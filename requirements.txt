@@ -1,0 +1,8 @@
+mlcroissant==1.0.5
+numpy==1.26.4
+PyYAML==6.0.1
+wfdb==4.1.2
+sweetviz==2.3.1
+pandas==2.2.2
+setuptools==70.0.0
+tqdm==4.66.4
