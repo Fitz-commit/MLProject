@@ -1,0 +1,180 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "Comprehensive Polysomnography (CPS) Dataset: A Resource for Sleep-Related Arousal Research",
+  "description": "The CPS dataset, assembled at Klinikum Esslingen, Germany, encompasses 113 diagnostic polysomnographic sleep recordings. These recordings include up to 36 raw and 23 derived data channels, alongide 81 types of annotated events for each participant, supplemented by data from various questionnaires. The dataset was collected during 2021-2022 for the medical study \"Computer-aided diagnostics of sleep-related arousals on the basis of pulse wave analyses\" in a collaborative effort between Klinikum Esslingen, IT-Designers Gruppe and NRI Medizintechnik GmbH, all based in Germany. The dataset may be used for research that is in-line with the original study goals.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "citeAs": "@article{kraft2024cps, title={{Comprehensive Polysomnography (CPS) Dataset: A Resource for Sleep-Related Arousal Research}, author={Kraft and Theissler and Wienhausen-Wilke and Walter and Kasneci}, year={2024}}",
+  "creator": [
+    {
+      "@type": "sc:Person",
+      "name": "Stefan Kraft",
+      "email": "stefan.kraft@stz-softwaretechnik.de",
+      "url": "https://orcid.org/0009-0008-5139-9951"
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Andreas Theissler",
+      "url": "https://orcid.org/0000-0003-0746-0424"
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Vera Wienhausen-Wilke",
+      "email": "v.wienhausen-wilke@klinikum-esslingen.de"
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Philipp Walter",
+      "email": "philipp.walter@it-designers.de"
+    },
+    {
+      "@type": "sc:Person",
+      "name": "Gjergji Kasneci",
+      "email": "gjergji.kasneci@tum.de"
+    }
+  ],
+  "license": "PhysioNet Credentialed Health Data License 1.5.0",
+  "url": "./data",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "records",
+      "name": "records",
+      "description": "List of all the record sample uuids",
+      "contentUrl": "./RECORDS",
+      "encodingFormat": "text/plain",
+      "sha256": "0e6649af334d613b4b7436cee326468c71004ae1369922a0b4b32ccf3f8bdd02"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "yaml-files",
+      "name": "yaml-files",
+      "description": "YAML files for each sample",
+      "encodingFormat": "application/x-yaml",
+      "includes": "./data/*/YAML/*.yml"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "psg-files",
+      "name": "psg-files",
+      "description": "PSG files for each sample",
+      "cr:excludes": "./data/*/PSG/Analysedaten/*",
+      "encodingFormat": "application/octet-stream",
+      "includes": "./data/*/PSG/*.dat"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "analysis-files",
+      "name": "analysis-files",
+      "description": "Analysis files for each sample",
+      "encodingFormat": "text/plain",
+      "includes": "./data/*/PSG/Analysedaten/*.txt"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "yaml-records",
+      "name": "yaml-records",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "yaml-data",
+          "name": "yaml-data",
+          "description": "yaml data for each sample",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "yaml-files"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "psg-records",
+      "name": "psg-records",
+      "description": "Set of sample data",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "psg-data",
+          "name": "psg-data",
+          "description": "Time series data from Dat files",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "psg-files"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "analysis-records",
+      "name": "analysis-records",
+      "description": "Records for analysis data",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "analysis-data",
+          "name": "analysis-data",
+          "description": "Analysis data from the text files",
+          "dataType": "sc:Text",
+          "source": {
+            "fileSet": {
+              "@id": "analysis-files"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

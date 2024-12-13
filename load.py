@@ -7,9 +7,9 @@ import logging
 from tqdm import tqdm
 import argparse
 
-ANALYSIS_DATA_FILES = ['AF.txt', 'Akt.txt', 'Alpha+Beta FFT.txt', 'Autonome Arousal.txt', 'Average Frequency Value.txt', 'CAP.txt', 'Cheyne Stokes.txt', 'Delta FFT.txt', 'Diastol PTT.txt', 'Effort Ext1 Anstieg.txt', 'Effort Ext1 Events.txt', 'Effort Ext2 Anstieg.txt', 'Effort Ext2 Events.txt', 'Flow Events.txt', 'HRV HF.txt', 'HRV LF.txt', 'Herzfrequenz Kurve.txt', 'Integral EMG.txt', 'Kardio Events.txt', 'Klassifizierte Arousal.txt', 'Klassifizierte PTT.txt', 'Körperlage.txt', 'Licht.txt', 'Marker.txt', 'Obstruktion.txt', 'PLM Events.txt', 'PTT Raw.txt', 'Phasenw. Events.txt', 'Phasenwinkel.txt', 'REM Prüfung.txt', 'REM.txt', 'RR-Intervall.txt', 'SVB.txt', 'Schlaf Profil Sicherheit.txt', 'Schlafprofil.txt', 'Schnarchen Events.txt', 'Sigma FFT.txt', 'SpO2 Events.txt', 'SpO2.txt', 'Spindel  K.txt', 'Spindelfrequenz.txt', 'Systol. PTT.txt']
+ANALYSIS_DATA_FILES = ["Kardio Events.txt", "Körperlage.txt"]
 
-YAML_DATA_FILES = ['allgemeiner_schlaffragebogen_1.yml', 'allgemeiner_schlaffragebogen_1_2.yml', 'arztbrief_1.yml', 'epworth_sleepiness_scale.yml', 'psqi_fragebogen_1.yml', 'psqi_fragebogen_2.yml', 'psqi_fragebogen_3.yml', 'psqi_fragebogen_4.yml', 'restless_legs_fragebogen.yml', 'scorer.yml']
+YAML_DATA_FILES = ['allgemeiner_schlaffragebogen_1.yml', 'allgemeiner_schlaffragebogen_1_2.yml']
 
 def load_signals(base_path, sample_ids):
     psg_files = [os.path.join(base_path, sample_id, 'PSG', sample_id) for sample_id in sample_ids]
@@ -70,7 +70,6 @@ def setup():
 
 
 def main():
-
     args = setup()    
 
     dataset = Dataset(jsonld="croissant.json")
